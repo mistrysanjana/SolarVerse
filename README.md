@@ -6,7 +6,7 @@
 
 ---
 
-## 🌌 Key Highlights & Features
+##  Key Highlights & Features
 
 ### 1. Signature Interactive 3D Solar System Explorer
 - Built with **Three.js** and **React Three Fiber / Drei**.
@@ -66,7 +66,7 @@ Dedicated exploration section covering:
 
 ---
 
-## 🛠 Technology Stack
+##  Technology Stack
 
 ### Frontend
 - **React 18** + **TypeScript**
@@ -88,7 +88,7 @@ Dedicated exploration section covering:
 
 ---
 
-## 📁 Project Directory Structure
+##  Project Directory Structure
 
 ```
 SolarVerse/
@@ -147,7 +147,7 @@ SolarVerse/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - **Node.js**: v18.0.0 or higher (v20+ recommended)
@@ -185,7 +185,7 @@ SolarVerse/
 
 ---
 
-## 💻 Running the Application
+##  Running the Application
 
 ### Option A: Run Both Frontend and Backend Concurrently (Recommended)
 From the root directory:
@@ -207,7 +207,7 @@ npm run dev
 
 ---
 
-## 🧪 Testing and Quality Assurance
+##  Testing and Quality Assurance
 
 Run the automated test suite powered by Vitest and Supertest:
 ```bash
@@ -220,7 +220,7 @@ All **18 automated tests** will execute and report output:
 
 ---
 
-## 🐘 Switching to PostgreSQL (Optional)
+##  Switching to PostgreSQL (Optional)
 
 SOLARVERSE is built using Prisma ORM. While SQLite is pre-configured for zero-friction local development, you can switch to PostgreSQL at any time:
 
@@ -244,7 +244,7 @@ SOLARVERSE is built using Prisma ORM. While SQLite is pre-configured for zero-fr
 
 ---
 
-## 📡 REST API Documentation
+##  REST API Documentation
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -262,7 +262,7 @@ SOLARVERSE is built using Prisma ORM. While SQLite is pre-configured for zero-fr
 
 ---
 
-## 🔬 Scientific Data Sources & Citations
+##  Scientific Data Sources & Citations
 
 1. **NASA Goddard Space Flight Center**: [Planetary Fact Sheets](https://nssdc.gsfc.nasa.gov/planetary/factsheet/) (Physical, orbital, and atmospheric data).
 2. **NASA Science Mission Directorate**: [Solar System Exploration](https://science.nasa.gov/solar-system/).
@@ -272,7 +272,7 @@ SOLARVERSE is built using Prisma ORM. While SQLite is pre-configured for zero-fr
 
 ---
 
-## 📸 Adding Screenshots
+##  Adding Screenshots
 When documenting your deployment:
 1. Capture screenshots of:
    - Homepage with cinematic 3D Solar System Explorer.
