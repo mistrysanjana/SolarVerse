@@ -1,0 +1,185 @@
+// Prisma Schema for SOLARVERSE
+// Supports SQLite for zero-friction local execution, and can be seamlessly switched to PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Planet {
+  id                      Int      @id @default(autoincrement())
+  slug                    String   @unique
+  name                    String
+  category                String   // Terrestrial, Gas Giant, Ice Giant
+  orderFromSun            Int
+  tagline                 String
+  overview                String
+  discoveryHistory        String
+  formationHistory        String
+  positionSummary         String
+
+  // Dimensions & Mass
+  meanRadiusKm            Float
+  meanDiameterKm          Float
+  massKg                  String   // e.g. "5.972 × 10^24 kg"
+  massEarthRelative       Float
+  gravityMps2             Float
+  gravityEarthRelative    Float
+
+  // Orbital Characteristics
+  meanDistanceFromSunKm   Float
+  meanDistanceAu          Float
+  perihelionKm            Float
+  aphelionKm              Float
+  orbitalPeriodDays       Float
+  orbitalPeriodYears      Float
+  orbitalVelocityKms      Float
+  orbitalInclinationDeg   Float
+  orbitalEccentricity     Float
+
+  // Rotation & Tilt
+  rotationPeriodHours     Float
+  rotationPeriodEarthDays Float
+  dayLengthHours          Float
+  rotationDirection       String   // Prograde, Retrograde
+  axialTiltDeg            Float
+  seasonsDescription      String
+
+  // Atmosphere & Climate
+  atmosphereComposition   String   // JSON string array of { gas: string, percentage: number }
+  surfacePressureBar      Float
+  meanTempC               Float
+  minTempC                Float
+  maxTempC                Float
+  tempMeasurementContext  String
+
+  // Surface & Geology
+  surfaceComposition     String
+  geologyDescription      String
+  notableFeatures         String   // JSON array of { name: string, description: string, type: string }
+
+  // Moons & Rings
+  moonCount               Int
+  confirmedMoons          Int
+  provisionalMoons        Int
+  hasRings                Boolean  @default(false)
+  ringSystemDescription   String?
+
+  // Magnetosphere & Interior
+  magneticFieldDescription String
+  internalStructure       String   // JSON array of { layer: string, depth: string, composition: string }
+
+  // Weather & Phenomena
+  weatherPhenomena        String
+
+  // Exploration & Life
+  explorationHistory      String
+  majorMissions           String   // JSON array of mission slugs/names
+  lifePossibilityEvidence String
+  lifePossibilityAssessment String
+
+  // Facts, Comparisons & FAQs
+  interestingFacts        String   // JSON string array
+  earthComparison         String   // JSON object with comparative stats
+  faqs                    String   // JSON array of { question: string, answer: string }
+
+  // Visuals & Styling
+  colorHex                String
+  accentColor             String
+  textureKey              String
+  heroImageUrl            String
+
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+
+model CelestialObject {
+  id                          Int      @id @default(autoincrement())
+  slug                        String   @unique
+  name                        String
+  category                    String   // dwarf_planet, moon, asteroid, comet, region
+  parentBody                  String?  // Sun, Earth, Jupiter, Saturn, Uranus, Neptune
+  diameterKm                  Float
+  massKg                      String?
+  gravityMps2                 Float?
+  meanDistanceKm              Float?
+  meanDistanceAu              Float?
+  orbitalPeriodDays           Float?
+  discoveryYear               Int?
+  discoveredBy                String?
+  overview                    String
+  geology                     String
+  atmosphere                  String?
+  exploration                 String
+  scientificSignificance      String
+  isDwarfPlanetIauExplained   Boolean  @default(false)
+  imageUrl                    String
+  facts                       String   // JSON string array
+  sources                     String   // JSON array of { name: string, url: string }
+  createdAt                   DateTime @default(now())
+  updatedAt                   DateTime @updatedAt
+}
+
+model Mission {
+  id              Int      @id @default(autoincrement())
+  slug            String   @unique
+  name            String
+  targetPlanet    String   // Sun, Mercury, Venus, Earth, Moon, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Deep Space
+  agency          String   // NASA, ESA, JAXA, ISRO, Roscosmos, Joint
+  launchYear      Int
+  launchDate      String
+  status          String   // Active, Completed, In Orbit, En Route
+  missionType     String   // Flyby, Orbiter, Lander, Rover, Sample Return, Space Observatory
+  description     String
+  keyDiscoveries  String   // JSON string array
+  outcomes        String
+  officialUrl     String
+  imageUrl        String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model GlossaryTerm {
+  id              Int      @id @default(autoincrement())
+  term            String   @unique
+  category        String   // Mechanics, Atmospheric, Astrophysics, Instruments, Planetary Geology
+  pronunciation   String?
+  shortDefinition String
+  fullDefinition  String
+  formula         String?
+  relatedTerms    String   // JSON string array
+}
+
+model QuizQuestion {
+  id                  Int      @id @default(autoincrement())
+  difficulty          String   // beginner, intermediate, advanced
+  category            String   // planets, moons, physics, exploration, history
+  question            String
+  options             String   // JSON string array of 4 options
+  correctIndex        Int
+  explanation         String
+  scientificReference String
+}
+
+model SpaceFact {
+  id                Int      @id @default(autoincrement())
+  category          String   // extreme, life, physics, history, size
+  fact              String
+  explanation       String
+  sourceName        String
+  sourceUrl         String
+  verificationDate  String
+}
+
+model ScientificSource {
+  id            Int      @id @default(autoincrement())
+  name          String
+  organization  String
+  url           String
+  description   String
+  lastVerified  String
+}

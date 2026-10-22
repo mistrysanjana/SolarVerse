@@ -1,0 +1,24 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+dist-ssr/
+*.local
+
+# Environment variables
+.env
+.env.production
+
+# Database
+backend/prisma/dev.db
+backend/prisma/dev.db-journal
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

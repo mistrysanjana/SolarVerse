@@ -1,0 +1,35 @@
+{
+  "name": "solarverse",
+  "version": "1.0.0",
+  "description": "SOLARVERSE — An Immersive Digital Space Museum & Solar System Explorer",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev:backend": "npm --workspace=backend run dev",
+    "dev:frontend": "npm --workspace=frontend run dev",
+    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"blue,cyan\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:backend": "npm --workspace=backend run build",
+    "build:frontend": "npm --workspace=frontend run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "test": "npm --workspace=backend run test",
+    "db:generate": "npm --workspace=backend run db:generate",
+    "db:push": "npm --workspace=backend run db:push",
+    "db:seed": "npm --workspace=backend run db:seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": [
+    "solar-system",
+    "astronomy",
+    "threejs",
+    "react",
+    "space",
+    "education"
+  ],
+  "author": "SOLARVERSE Team",
+  "license": "MIT"
+}
